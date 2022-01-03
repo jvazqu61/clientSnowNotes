@@ -2,14 +2,16 @@ import Header from '../components/layout/Header';
 import styles from '../styles/Home.module.css';
 import {MongoClient} from 'mongodb'
 import Card from '../components/Card';
+import AddNewDate from '../components/AddNewDate'
 
 export default function Home(props) {
   return (
     <div className={styles.container}>
        
       <Header title='Snow notes' />
+      <AddNewDate clients={props.clients}/>
       <main className={styles.main}>
-      
+        
         <div className={styles.grid}>
           {props.clients?props.clients.map((client,i) => (
              
