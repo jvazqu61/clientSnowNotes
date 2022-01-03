@@ -1,10 +1,14 @@
-import styles from '../styles/Home.module.css';
+import styles from '../styles/Card.module.css';
+import {Button, Container} from 'react-bootstrap';
 
 function Card(props) {
     return (
         <a href="https://nextjs.org/docs" className={styles.card}>
             <h2>{props.name} &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
+            <Container>
+                <Button variant='secondary' id={styles.clientButton}>Paid</Button>
+                <Button>Snow Dates</Button>
+            </Container>
         </a>
     )
 }

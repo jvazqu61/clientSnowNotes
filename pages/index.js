@@ -1,10 +1,9 @@
 import Header from '../components/layout/Header';
-import Image from 'next/image'
 import styles from '../styles/Home.module.css';
-import {Button} from 'react-bootstrap'
+import {MongoClient} from 'mongodb'
 import Card from '../components/Card';
 
-export default function Home() {
+export default function Home(props) {
   return (
     <div className={styles.container}>
        
@@ -12,17 +11,20 @@ export default function Home() {
       <main className={styles.main}>
       
         <div className={styles.grid}>
-          <Card />
+          {props.clients?props.clients.map((client,i) => (
+             
+              <Card key={client.i} name={client.name}/>
+            
+              
+            
+          )) : <></>}
+          
           
         </div>
       </main>
 
       <footer className={styles.footer}>
-        <h6
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <h6>
           Juan Vazquez 2022
         </h6>
       </footer>
@@ -30,8 +32,26 @@ export default function Home() {
   )
 }
 
-export  function getStaticProps(){
+export  async function getStaticProps(){
+  // make a connection to mongodb
+  const client = await MongoClient.connect(process.env.MONGO_DB);
+  //get the data from the collection
+  const db = client.db();
+  const clientsConnection = db.collection('clients');
+  //set the clients to the returned data
+  const allClients = await clientsConnection.find().toArray();
+  //close the connection
+  client.close();
+  console.log("all clients: "+allClients)
+
   return({
-    props:{}
+    props:{
+      clients: allClients.map(client => {
+        return ({
+          name:client.name
+        })
+      })
+    },
+    revalidate:1
   })
 }

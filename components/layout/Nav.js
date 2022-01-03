@@ -9,7 +9,7 @@ function MyNav() {
     const [showNewClientForm, setShowClientForm] = useState(false);
 
     const showCloseForm = () =>{
-        console.log("in")
+       
         setShowClientForm(!showNewClientForm);
     }
 
@@ -20,7 +20,7 @@ function MyNav() {
            
                 <Navbar.Brand className={styles.nav} href="/">Snow Notes</Navbar.Brand>
                 <Nav>
-                    <Nav.Link onClick={showCloseForm} className={styles.linkClient}>add client</Nav.Link>
+                    <Nav.Link onClick={showCloseForm} className={styles.linkClient}><u>Add Client</u></Nav.Link>
                 </Nav>
             </Container>
             <Modal show={showNewClientForm} onHide={showCloseForm}>
