@@ -1,4 +1,5 @@
 import {Modal, Button} from 'react-bootstrap';
+import styles from '../styles/NewClientForm.module.css';
 import {useRef} from 'react';
 
 
@@ -32,19 +33,19 @@ function NewClientForm(props) {
      
 
     return (
-        <div>
+        <div className={styles.form}>
             <Modal.Header closeButton>
                 <Modal.Title>Add new client</Modal.Title>
             </Modal.Header>
 
             <Modal.Body>
                 <l>Name</l>
-                <br/>
+                
                 <input type='text' required id='title' ref={nameInputRef} />
             </Modal.Body>
 
             <Modal.Footer>
-                <Button onClick={submitHandler} variant="primary">add</Button>
+                <Button onClick={submitHandler} variant="primary">+</Button>
             </Modal.Footer>
         </div>
     )

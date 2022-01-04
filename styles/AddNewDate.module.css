@@ -1,6 +1,7 @@
 .dateButton{
     margin-left: 10rem;
     margin-top: 1.5rem;
+    
 }
 
 .popover{
@@ -18,15 +19,38 @@
     margin-bottom: 20px;
     margin-left: 25px;
     min-width: 300px; 
+    border-radius: 0.5rem;
+}
+#allButton{
+    margin-left: 10px;
+    max-width: 120px;
+    max-height: 40px;
+    font-size: 14px;
+    line-height: 10px;
+    
+    
 }
 
-#clientsContainer{
+.clientsContainer{
     justify-content: center;
     align-items: center;
-    margin-left: 20px;
+    margin-left: 70px;
     margin-bottom: 20px;
     font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
     Bitstream Vera Sans Mono, Courier New, monospace;
     border: 1px solid #eaeaea;
+    border-radius: 0.5rem;
     max-width: 300px;
+    max-height: 400px;
+    overflow-y:auto
+    
+}
+
+.clientsContainer ul{
+    width: -moz-fit-content;
+    background-color: #f3f3e7;
+    padding: 5px;
+    margin-bottom: 1em;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
 }

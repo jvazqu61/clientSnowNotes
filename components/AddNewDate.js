@@ -1,6 +1,6 @@
 import {Form,OverlayTrigger, Button, Popover, Container,Modal} from 'react-bootstrap';
 import styles from '../styles/AddNewDate.module.css';
-import {useState,useRef} from 'react'
+import {useState,useRef, Fragment} from 'react'
 
 
 function AddNewDate(props) {
@@ -57,6 +57,29 @@ function AddNewDate(props) {
         });
     }
 
+    function handleAddDateAll(){
+        const setDate = selectedDate.current.value;
+        const allClientIds = clientOptions.map((client) => {return client.id})
+
+        fetch('/api/addNewDate',{
+            method:'POST',
+            body:JSON.stringify({
+               
+                selectedClients: allClientIds,
+                date: setDate,
+            }),
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        }).then(function(response) {
+            if (response.status === 201){
+                handleIsOpenChange();
+            }
+                
+            
+        });
+    }
+
 
 
 
@@ -69,17 +92,18 @@ function AddNewDate(props) {
             <Modal.Header as="h3">Select date and clients</Modal.Header>
             <Modal.Body>
                 <input id={styles.date} type='date' ref={selectedDate} />
-                <Container id={styles.clientsContainer}>
+                <Button onClick={handleAddDateAll} id={styles.allButton}>+ To All</Button>
+                <Container className={styles.clientsContainer}>
                     {clientOptions.map(client => {
                         return (
-                            <div key={client.id}>
+                            <ul  key={client.name}>
                                 <input type="checkBox"  value={client.id} onChange={handleSelectedClient}/>
                                 <label > {client.name}</label>
-                            </div>
+                            </ul>
                         )
                     })}
                 </Container>
-                <Button onClick={handleAddDate}>+</Button>
+                <Button id={styles.allButton} onClick={handleAddDate}>+ To Selected</Button>
             </Modal.Body>
             </div>
 

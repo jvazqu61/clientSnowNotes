@@ -1,0 +1,15 @@
+.form l{
+    margin-right: 10px;
+}
+
+.form input{
+    border-radius: 0.5rem;
+}
+
+.form Button{
+    margin-left: 10px;
+    max-width: 120px;
+    max-height: 40px;
+    font-size: 18px;
+    line-height: 10px;
+}
