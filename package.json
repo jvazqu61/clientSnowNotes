@@ -10,7 +10,7 @@
   "dependencies": {
     "bootstrap": "^5.1.3",
     "mongodb": "^4.2.2",
-    "next": "12.0.7",
+    "next": "^12.0.7",
     "react": "17.0.2",
     "react-bootstrap": "^2.1.0",
     "react-dom": "17.0.2",
@@ -24,5 +24,13 @@
   "version": "1.0.0",
   "main": "next.config.js",
   "author": "juan vazquez",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jvazqu61/clientSnowNotes.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jvazqu61/clientSnowNotes/issues"
+  },
+  "homepage": "https://github.com/jvazqu61/clientSnowNotes#readme"
 }

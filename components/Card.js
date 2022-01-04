@@ -29,7 +29,7 @@ function Card(props) {
             <h2>{props.client.name}</h2>
             <Container>
                
-                <h5><u> Unpaid</u></h5>
+                <h5 ><u> Unpaid</u></h5>
                 {!props.client.unpaidDates?<div>All Paid</div>: props.client.unpaidDates.map((date,i) => {
                     return(
                       <li key={i}>{date}</li>  

@@ -1,4 +1,32 @@
 .dateButton{
-    margin-left: 5rem;
+    margin-left: 10rem;
     margin-top: 1.5rem;
+}
+
+.popover{
+    min-width: 400px;
+}
+
+/*  */
+
+.popover label{
+    font-size: 25px;
+    margin-left: 10px;
+}
+
+#date{
+    margin-bottom: 20px;
+    margin-left: 25px;
+    min-width: 300px; 
+}
+
+#clientsContainer{
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+    Bitstream Vera Sans Mono, Courier New, monospace;
+    border: 1px solid #eaeaea;
+    max-width: 300px;
 }

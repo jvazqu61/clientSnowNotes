@@ -1,4 +1,4 @@
-import {Form,OverlayTrigger, Button, Popover} from 'react-bootstrap';
+import {Form,OverlayTrigger, Button, Popover, Container,Modal} from 'react-bootstrap';
 import styles from '../styles/AddNewDate.module.css';
 import {useState,useRef} from 'react'
 
@@ -9,9 +9,13 @@ function AddNewDate(props) {
     )
 
     const [selectedClients, setSelectedClients] = useState([]);
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
 
     const selectedDate = useRef();
+
+    function handleIsOpenChange(){
+        setIsOpen(!isOpen);
+    }
     
 
     function handleSelectedClient (e)  {
@@ -46,7 +50,7 @@ function AddNewDate(props) {
             }
         }).then(function(response) {
             if (response.status === 201){
-                
+                handleIsOpenChange();
             }
                 
             
@@ -55,29 +59,32 @@ function AddNewDate(props) {
 
 
 
-    const popover = (
-        <Popover  id="popover-basic">
-          <Popover.Header as="h3">Select date and clients</Popover.Header>
-          <Popover.Body>
-            <input type='date' ref={selectedDate} />
-            {clientOptions.map(client => {
-                return (
-                    <div key={client.id}>
-                        <input type="checkBox"  value={client.id} onChange={handleSelectedClient}/>
-                        <label htmlFor="vehicle1"> {client.name}</label>
-                    </div>
-                )
-            })}
-
-            <Button onClick={handleAddDate}>+</Button>
-          </Popover.Body>
-        </Popover>
-      );
 
     return (
-        <OverlayTrigger  trigger="click" placement="right" overlay={popover}>
-            <Button className={styles.dateButton} variant="secondary">Add New Date</Button>
-        </OverlayTrigger>
+        
+        <>
+        <Button onClick={handleIsOpenChange} className={styles.dateButton} variant="secondary">Add New Date</Button>
+        <Modal show={isOpen} onHide={handleIsOpenChange}>
+            <div className={styles.popover}>
+            <Modal.Header as="h3">Select date and clients</Modal.Header>
+            <Modal.Body>
+                <input id={styles.date} type='date' ref={selectedDate} />
+                <Container id={styles.clientsContainer}>
+                    {clientOptions.map(client => {
+                        return (
+                            <div key={client.id}>
+                                <input type="checkBox"  value={client.id} onChange={handleSelectedClient}/>
+                                <label > {client.name}</label>
+                            </div>
+                        )
+                    })}
+                </Container>
+                <Button onClick={handleAddDate}>+</Button>
+            </Modal.Body>
+            </div>
+
+        </Modal>
+        </>
     )
 }
 
