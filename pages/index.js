@@ -9,13 +9,13 @@ export default function Home(props) {
     <div className={styles.container}>
        
       <Header title='Snow notes' />
-      <AddNewDate clients={props.clients}/>
+      <AddNewDate clients={props.clients} />
       <main className={styles.main}>
         
         <div className={styles.grid}>
           {props.clients?props.clients.map((client,i) => (
              
-              <Card key={client.i} name={client.name}/>
+              <Card key={client.i} client={client}/>
             
               
             
@@ -50,7 +50,10 @@ export  async function getStaticProps(){
     props:{
       clients: allClients.map(client => {
         return ({
-          name:client.name
+          name:client.name,
+          id:client._id.toString(),
+          paidDates:client.paidDates?client.paidDates:[],
+          unpaidDates:client.unpaidDates?client.unpaidDates:[]
         })
       })
     },
