@@ -1,6 +1,7 @@
 import {Form,OverlayTrigger, Button, Popover, Container,Modal} from 'react-bootstrap';
 import styles from '../styles/AddNewDate.module.css';
-import {useState,useRef, Fragment} from 'react'
+import {useState,useRef} from 'react';
+import {useRouter} from 'next/router';
 
 
 function AddNewDate(props) {
@@ -12,6 +13,7 @@ function AddNewDate(props) {
     const [isOpen, setIsOpen] = useState(false);
 
     const selectedDate = useRef();
+    const router = useRouter();
 
     function handleIsOpenChange(){
         setIsOpen(!isOpen);
@@ -51,6 +53,7 @@ function AddNewDate(props) {
         }).then(function(response) {
             if (response.status === 201){
                 handleIsOpenChange();
+                router.push('/');
             }
                 
             
@@ -74,6 +77,7 @@ function AddNewDate(props) {
         }).then(function(response) {
             if (response.status === 201){
                 handleIsOpenChange();
+                router.push('/');
             }
                 
             

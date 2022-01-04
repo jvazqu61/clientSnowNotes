@@ -20,6 +20,7 @@
   .card h2 {
     margin: 0 0 1rem 0;
     font-size: 30px;
+    border-bottom: 1px solid black;
   }
   .card h5{
     font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,

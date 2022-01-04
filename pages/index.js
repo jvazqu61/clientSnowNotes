@@ -45,7 +45,8 @@ export  async function getStaticProps(){
   //close the connection
   client.close();
   console.log("all clients: "+allClients)
-
+  
+  
   return({
     props:{
       clients: allClients.map(client => {

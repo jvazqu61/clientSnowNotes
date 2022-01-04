@@ -2,10 +2,13 @@ import styles from '../styles/Card.module.css';
 import {Button, Container, Modal} from 'react-bootstrap';
 import {useState} from 'react';
 import DisplaySnowDates from './DisplaySnowDates';
+import {useRouter} from 'next/router';
+import moment from 'moment';
 
 function Card(props) {
 
     const [showDates, setShowDates] = useState(false);
+    const router = useRouter();
     function handleShowDates(){
         setShowDates(!showDates);
     }
@@ -21,7 +24,13 @@ function Card(props) {
             headers:{
                 'Content-Type': 'application/json'
             }
-        })
+        }).then(function(response) {
+            if (response.status === 201){
+                router.push('/');
+            }
+                
+            
+        });
     }
 
     return (
@@ -29,10 +38,10 @@ function Card(props) {
             <h2>{props.client.name}</h2>
             <Container>
                
-                <h5 ><u> Unpaid</u></h5>
+                <h5 > {props.client.unpaidDates && props.client.unpaidDates.length?"Unpaid":"-"}</h5>
                 {!props.client.unpaidDates?<div>All Paid</div>: props.client.unpaidDates.map((date,i) => {
                     return(
-                      <li key={i}>{date}</li>  
+                      <li key={i}>{moment(date).format('LL')}</li>  
                     )
                     
                 })}

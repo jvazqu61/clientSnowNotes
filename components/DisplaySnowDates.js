@@ -1,4 +1,5 @@
 import {Modal} from 'react-bootstrap';
+import moment from 'moment';
 
 
 
@@ -14,7 +15,7 @@ function DisplaySnowDates(props) {
                         <ul>
                         {!props.client.paidDates?<div>None</div>: props.client.paidDates.map((date,i) => {
                             return(
-                            <li key={i}>{date}</li>  
+                            <li key={i}>{moment(date).format('LL')}</li>  
                             )
                             
                         })}
@@ -23,7 +24,7 @@ function DisplaySnowDates(props) {
                         <ul>
                         {!props.client.unpaidDates?<div>All Paid</div>: props.client.unpaidDates.map((date,i) => {
                             return(
-                            <li key={i}>{date}</li>  
+                            <li key={i}>{moment(date).format('LL')}</li>  
                             )
                             
                         })}

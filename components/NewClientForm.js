@@ -1,10 +1,12 @@
 import {Modal, Button} from 'react-bootstrap';
 import styles from '../styles/NewClientForm.module.css';
 import {useRef} from 'react';
+import {useRouter} from 'next/router';
 
 
 function NewClientForm(props) {
     const nameInputRef = useRef();
+    const router = useRouter();
 
     async function submitHandler(event) {
         event.preventDefault();
@@ -26,6 +28,7 @@ function NewClientForm(props) {
         });
         
         props.closeForm();
+        router.push('/');
     
         
       }
