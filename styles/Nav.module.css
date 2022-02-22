@@ -11,4 +11,20 @@
     border-radius: 0.5rem;
     font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
     Bitstream Vera Sans Mono, Courier New, monospace;
+    color: aliceblue;
+}
+
+.links{
+    display: flex;
+    gap: 2rem;
+
+}
+
+.links  > *:hover{
+    background-color: antiquewhite;
+    color: black;
+}
+
+@media (max-width:500px) {
+    
 }

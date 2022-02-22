@@ -39,21 +39,23 @@ function Card(props) {
             <Container>
                
                 <h5 > {props.client.unpaidDates && props.client.unpaidDates.length?"Unpaid":"-"}</h5>
-                {!props.client.unpaidDates?<div>All Paid</div>: props.client.unpaidDates.map((date,i) => {
-                    return(
-                      <li key={i}>{moment(date).format('LL')}</li>  
-                    )
-                    
-                })}
+                <div className={styles.dates}>
+                    {!props.client.unpaidDates?<div>All Paid</div>: props.client.unpaidDates.map((date,i) => {
+                        return(
+                        <div key={i}>{moment(date).format('MMM Do YY')}</div>  
+                        )
+                        
+                    })}
+                </div>
                     
                     
                
                 
             </Container>
-            <Container id={styles.buttonContainer}>
+            <div className={styles.buttonContainer}>
                 <Button onClick={updatePaidDates} variant='secondary' id={styles.clientButton}>Paid For</Button>
                 <Button onClick={handleShowDates}>Snow Dates</Button>
-            </Container>
+            </div>
 
             <Modal show={showDates} onHide={handleShowDates}>
                 <DisplaySnowDates client={props.client}/>  

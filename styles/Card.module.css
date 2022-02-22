@@ -7,7 +7,19 @@
     border: 3px solid #eaeaea;
     border-radius: 10px;
     transition: color 0.15s ease, border-color 0.15s ease;
-    max-width: 500px;
+    width: 500px;
+  }
+
+  .dates{
+    display: flex;
+    flex-wrap: wrap;
+    text-decoration-style: none;
+
+  }
+
+  .dates div{
+    margin: 0.5rem;
+    background-color: aliceblue;
   }
   
   .card:hover,
@@ -51,6 +63,16 @@
       margin-right: 30px;
   }
 
-  #buttonContainer{
+  .buttonContainer{
     margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+    
   }
+
+  .buttonContainer > *:hover{
+    background-color: azure;
+    color:black;
+  }
+

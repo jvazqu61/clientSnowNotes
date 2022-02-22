@@ -2,23 +2,21 @@ import Header from '../components/layout/Header';
 import styles from '../styles/Home.module.css';
 import {MongoClient} from 'mongodb'
 import Card from '../components/Card';
-import AddNewDate from '../components/AddNewDate'
+import Nav from '../components/layout/Nav';
 
 export default function Home(props) {
   return (
+    <>
+     <Nav clients={props.clients}/>
     <div className={styles.container}>
        
       <Header title='Snow notes' />
-      <AddNewDate clients={props.clients} />
       <main className={styles.main}>
         
         <div className={styles.grid}>
           {props.clients?props.clients.map((client,i) => (
              
-              <Card key={client.i} client={client}/>
-            
-              
-            
+              <Card key={client.i} client={client}/>         
           )) : <></>}
           
           
@@ -27,10 +25,11 @@ export default function Home(props) {
 
       <footer className={styles.footer}>
         <h6>
-          Juan Vazquez 2022
+        &copy;  Juan Vazquez 2022
         </h6>
       </footer>
     </div>
+    </>
   )
 }
 
